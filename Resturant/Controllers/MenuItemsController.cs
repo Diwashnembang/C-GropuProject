@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -47,8 +48,9 @@ namespace Resturant.Controllers
 
         // GET: MenuItems/Create
         public IActionResult Create()
-        {
-            ViewData["MenusId"] = new SelectList(_context.Menu, "MenusId", "MenusId");
+        { 
+         
+            ViewData["MenusId"] = new SelectList(_context.Menu, "MenusId", "MenuType");
             return View();
         }
 
@@ -58,13 +60,33 @@ namespace Resturant.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MenuItemsId,Name,Price,MenusId")] MenuItems menuItems)
+
         {
-           
-                _context.Add(menuItems);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            
-            
+            if (!ModelState.IsValid)
+            {
+
+                foreach (var state in ModelState.Values)
+                {
+                    foreach (var error in state.Errors)
+                    {
+                        var errorMessage = error.ErrorMessage;
+                        // Log or handle the error message
+                        // For example, you can log it to the console
+                        Debug.WriteLine($"Error: {errorMessage}");
+                    }
+                }
+            }
+
+                    if (ModelState.IsValid)
+                {
+
+                    _context.Add(menuItems);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+       
+                ViewData["MenusId"] = new SelectList(_context.Menu, "MenusId", "MenusId", menuItems.MenusId);
+                return View(menuItems);
         }
 
         // GET: MenuItems/Edit/5

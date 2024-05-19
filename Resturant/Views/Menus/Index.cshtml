@@ -1,15 +1,37 @@
-﻿@model IEnumerable<Resturant.Models.Menus>
+﻿@model IEnumerable<Resturant.Models.MenuItems>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Menu</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var menuItem in Model)
+        {
+            
+                <tr>
+                    <td>@Html.DisplayFor(modelItems => menuItem.Name)</td>
+                    <td>@Html.DisplayFor(modelItems => menuItem.Price)</td>
+                    <td>@Html.DisplayFor(modelItems => menuItem.Menus.MenuType)</td>
+                </tr>
+            
+        }
+    </tbody>
+</table>
+
+   @*  </table> <table class="table">
     <thead>
         <tr>
             <th>
@@ -32,4 +54,6 @@
         </tr>
 }
     </tbody>
-</table>
+</table>  *@
+ 
+

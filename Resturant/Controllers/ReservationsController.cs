@@ -48,7 +48,7 @@ namespace Resturant.Controllers
         // GET: Reservations/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "CustomerId");
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "Id", "Id");
             return View();
         }
 
@@ -59,11 +59,14 @@ namespace Resturant.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Date,Time,NoOfPeople,TabelNo,CustomerId")] Reservation reservation)
         {
-            
+            if (ModelState.IsValid)
+            {
                 _context.Add(reservation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-          
+            }
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "Id", "Id", reservation.CustomerId);
+            return View(reservation);
         }
 
         // GET: Reservations/Edit/5
@@ -79,7 +82,7 @@ namespace Resturant.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "CustomerId", reservation.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "Id", "Id", reservation.CustomerId);
             return View(reservation);
         }
 
@@ -115,7 +118,7 @@ namespace Resturant.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "CustomerId", reservation.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "Id", "Id", reservation.CustomerId);
             return View(reservation);
         }
 

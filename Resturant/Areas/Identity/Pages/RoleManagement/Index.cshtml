@@ -1,0 +1,33 @@
+﻿@page
+@model Resturant.Areas.Identity.Pages.RoleManagement.IndexModel
+@{
+    ViewData["Title"] = "Role Management";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <h2>Existing Roles</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Role Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var role in Model.Roles)
+                {
+                    <tr>
+                        <td>@role.Name</td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@role.Id" class="btn btn-primary">Edit</a>
+                            <a asp-page="./Delete" asp-route-id="@role.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

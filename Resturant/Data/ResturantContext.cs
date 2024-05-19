@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Resturant.Models;
 
 namespace Resturant.Data
 {
-    public class ResturantContext : DbContext
+    public class ResturantContext : IdentityDbContext<Customer>
     {
         public ResturantContext (DbContextOptions<ResturantContext> options)
             : base(options)
@@ -18,5 +19,6 @@ namespace Resturant.Data
         public DbSet<Resturant.Models.MenuItems> MenuItems { get; set; } = default!;
         public DbSet<Resturant.Models.Customer> Customer { get; set; } = default!;
         public DbSet<Resturant.Models.Reservation> Reservation { get; set; } = default!;
+        
     }
 }

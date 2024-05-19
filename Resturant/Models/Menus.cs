@@ -4,7 +4,7 @@
     {
         public int MenusId { get; set; }
         public string MenuType { get; set; }
-       public virtual ICollection<MenuItems> MenuItems { get; set; } = new List<MenuItems>();
+       public virtual ICollection<MenuItems>? MenuItems { get; set; }
       
 
     }

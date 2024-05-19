@@ -2,7 +2,59 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="homepage">
+    
+        <div class="info">
+            <div class="tag">
+                <p>Best In Town</p>
+            </div>
+            <div>
+                <h1>ENJOY OUR CHICKEN</h1>
+                <h1><span class="tag">BURGER</span> BEST FOOD</h1>
+            </div>
+        </div>
+        <div class="chicken-photo">
+            <img src="~/assets/chicken.png" alt="Alternate Text"/>
+        </div>
+        <div class="bookNowButton">
+            <button onclick="location.href='@Url.Action("Create", "Reservations")'">Book Now</button>
+        </div>
+        <div class="reviews secondary meroflex">
+            <h1>Reviews</h1>
+            <p>
+            This place is great! Atmosphere is chill and cool but the staff is also really friendly. They know what they’re doing and what they’re talking about, and you can tell making the customers happy is their main priority. Food is pretty good, some italian classics and some twists, and for their prices it’s 100% worth it.
+
+            </p>
+            <span class="reviewer secondary">
+                -Billy
+            </span>
+        </div>
+        <div class="hours meroflex">
+            <h1>
+                Trading Hours
+            </h1>
+        <div class="hoursInfo">
+            <p class="secondary">Sunday: 8am - 8pm</p>
+            <p class="secondary">Monday: 6am - 6pm</p>
+            <p class="secondary">Tuesday: 6am - 6pm</p>
+            <p class="secondary">Wednesday: 6am - 6pm</p>
+            <p class="secondary">Thursday: 6am - 10pm</p>
+            <p class="secondary">Friday: 6am - 10pm</p>
+            <p class="secondary">Saturday: 8am - 10pm</p>
+        </div>
+        </div>
+        <div class="teamInfo meroflex">
+        
+            <h1>Our Team</h1>
+            <div class="teamMembers">
+                <p class="members secondary">Dwiash 12203058</p>
+                <p class="members secondary">Bijita </p>
+                <p class="members secondary">Anjila</p>
+                <p class="members secondary">Dipesh</p>
+            </div>
+        </div>
+   
+
 </div>
+
+

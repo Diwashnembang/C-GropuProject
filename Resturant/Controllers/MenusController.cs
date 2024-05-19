@@ -22,7 +22,9 @@ namespace Resturant.Controllers
         // GET: Menus
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Menu.ToListAsync());
+           
+            var resturantContext = _context.MenuItems.Include(m => m.Menus);
+            return View(await resturantContext.ToListAsync());
         }
 
         // GET: Menus/Details/5
@@ -55,6 +57,7 @@ namespace Resturant.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MenusId,MenuType")] Menus menus)
+
         {
             if (ModelState.IsValid)
             {

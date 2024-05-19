@@ -8,6 +8,6 @@ namespace Resturant.Models
         public string Name {  get; set; }
         public decimal Price { get; set; }
         public int MenusId {  get; set; }
-        public  Menus Menus { get; set; } = null!;
+        public  virtual Menus? Menus { get; set; }
     }
 }

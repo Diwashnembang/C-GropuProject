@@ -1,22 +1,162 @@
-html {
-  font-size: 14px;
+@import url("https://fonts.googleapis.com/css2?family=Aclonica&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
+
+:root {
+    --primary: #CC3333;
+    --seconday: #d8e4ea;
+    --third: #FFF8EE;
+    --fourth: #2A435D;
+    --primaryfont: "Aclonica", sans-serif;
+    --secondaryfont: "Abel", sans-serif;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.homepage {
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-areas:
+        ". info info info . . photo photo . ."
+        ".   button . . . . . . . ."
+        "reviews reviews reviews reviews reviews reviews reviews reviews reviews reviews"
+        "hours  hours hours hours hours hours hours hours hours hours"
+        "team team team team team team team team team team "
+}
+body{
+    background: var(--third);
+    
+   
+
+}
+.meroflex {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 0;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.info{
+    grid-area: info;
+
 }
 
-body {
-  margin-bottom: 60px;
+.tag{
+    color: var(--primary);
+    margin-bottom : 0;
+}
+.red{
+    color: var(--primary);
+}
+
+.chicken-photo{
+    grid-area: photo;
+}
+.bookNowButton{
+    grid-area : button;
+    
+}
+.bookNowButton button{
+
+    width : 200px;
+    font-size: 35px;
+    border-radius:0.2rem;
+    background-color: var(--primary);
+    }
+
+h1{
+    font-size: 50px;
+    font-family: var(--primaryfont);
+}
+
+.meroNav{
+    display: flex;
+    justify-content: flex-end;
+    background: var(--third);
+    width: 100%;
+}
+
+.mero{
+    margin:0;
+    padding: 0;
+}
+.meroNavUl{
+    justify-content:flex-end;
+    padding-right:5%;
+}
+
+.reviews {
+    position:relative;
+    grid-area: reviews;
+    padding: 4rem 0;
+    margin: 4rem 0;
+    background: var(--seconday);
+    }
+
+.reviews p{
+    width:50%;
+    
+}
+.reviewer{
+    grid-area: reviewer;
+}
+.hours {
+    grid-area: hours;
+    padding: 15rem 0;
+}
+footer{
+    position: relative !important;
+}
+
+.secondary{
+    font-family:var(--secondaryfont);
+}
+
+.centerMa{
+    display: flex;
+    justify-content: center !important; 
+}
+
+.hoursInfo {
+    grid-area: time;
+    font-size: 30px;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    background: var(--fourth);
+    align-items: center;
+    color: white;
+    padding: 1rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.hours h1{
+    grid-area : hours;
+    
+}
+
+.teamInfo{
+    position: relative;
+    grid-area:team;
+    font-size:30px;
+
+}
+
+
+
+.reviews::before {
+    content: '';
+    position: absolute;
+    top:100%;
+    left:0;
+    background: url("../assets/wave.svg");
+    width: 100%;
+    height:100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
 }

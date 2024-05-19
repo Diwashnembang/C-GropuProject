@@ -1,13 +1,16 @@
-﻿namespace Resturant.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace Resturant.Models
 {
-    public class Customer
+    public class Customer : IdentityUser
     {
         public int CustomerId { get; set; }
         public string Name { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-
-        public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
         
+
+
+        public ICollection<Reservation>? Reservations { get; set; }
+
+     
     }
 }

@@ -7,7 +7,7 @@
         public TimeOnly Time { get; set; }
         public int NoOfPeople {  get; set; }
         public int TabelNo {  get; set; }
-        public int CustomerId { get; set; }
-        public Customer Customer { get; set; } = null!;
+        public string  CustomerId { get; set; }
+        public Customer? Customer { get; set; }
     }
 }
